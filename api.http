@@ -1,0 +1,12 @@
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "Name": "Ali KARABAY",
+  "Email": "test@mail.com"
+}
+
+###
+
+DELETE http://localhost:3000/api/users/1
+Content-Type: application/json
