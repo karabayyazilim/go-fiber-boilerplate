@@ -2,13 +2,13 @@ package service
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"karabayyazilim/src/config"
-	"karabayyazilim/src/helpers"
-	"karabayyazilim/src/models"
+	"karabayyazilim/src/internal/config"
+	"karabayyazilim/src/internal/models"
+	"karabayyazilim/src/pkg/paginate"
 )
 
 type UserService interface {
-	List(paginator helpers.Paginator) []models.User
+	List(paginator paginate.Paginator) []models.User
 	Create(c *fiber.Ctx) models.User
 	FindById(id int) (models.User, error)
 	Update(id int, c *fiber.Ctx) models.User
@@ -20,7 +20,7 @@ type User struct {
 
 var db = config.Database()
 
-func (u *User) List(paginator helpers.Paginator) []models.User {
+func (u *User) List(paginator paginate.Paginator) []models.User {
 	var users []models.User
 	paginator.DB = db
 	db = paginator.Paginate()

@@ -4,7 +4,6 @@ import (
 	"github.com/gofiber/fiber/v2/log"
 	"github.com/joho/godotenv"
 	"os"
-	"regexp"
 )
 
 var (
@@ -18,14 +17,10 @@ var (
 	DbTimeZone string
 )
 
-const projectDirName = "fiber"
-
 func init() {
-	projectName := regexp.MustCompile(`^(.*` + projectDirName + `)`)
 	currentWorkDirectory, _ := os.Getwd()
-	rootPath := projectName.Find([]byte(currentWorkDirectory))
 
-	err := godotenv.Load(string(rootPath) + `/.env`)
+	err := godotenv.Load(string(currentWorkDirectory) + `/.env`)
 
 	if err != nil {
 		log.Fatalf("Error loading .env file", err)

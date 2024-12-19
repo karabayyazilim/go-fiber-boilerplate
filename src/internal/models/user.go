@@ -2,7 +2,7 @@ package models
 
 import (
 	"gorm.io/gorm"
-	"karabayyazilim/src/config"
+	"karabayyazilim/src/internal/config"
 )
 
 var db *gorm.DB

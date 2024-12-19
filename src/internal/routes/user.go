@@ -2,7 +2,7 @@ package routes
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"karabayyazilim/src/controllers"
+	"karabayyazilim/src/internal/controllers"
 )
 
 func UserRoutes(route fiber.Router) {

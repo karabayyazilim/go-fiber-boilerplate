@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"karabayyazilim/src/helpers"
-	"karabayyazilim/src/models"
-	service "karabayyazilim/src/services"
+	"karabayyazilim/src/internal/models"
+	"karabayyazilim/src/internal/services"
+	"karabayyazilim/src/pkg/paginate"
 	"strconv"
 )
 
@@ -18,7 +18,7 @@ func UserList(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 	pageSize, _ := strconv.Atoi(c.Query("pageSize", "10"))
 
-	paginator := helpers.Paginator{
+	paginator := paginate.Paginator{
 		Page:     page,
 		PageSize: pageSize,
 	}
