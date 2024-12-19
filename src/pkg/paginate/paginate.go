@@ -1,4 +1,4 @@
-package helpers
+package paginate
 
 import "gorm.io/gorm"
 

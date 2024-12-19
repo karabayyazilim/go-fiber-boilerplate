@@ -1,6 +1,6 @@
 package main
 
-import app "karabayyazilim/src"
+import "karabayyazilim/src/internal/app"
 
 func main() {
 	app.SetupApp()

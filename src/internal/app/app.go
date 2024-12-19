@@ -2,8 +2,8 @@ package app
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"karabayyazilim/src/config"
-	"karabayyazilim/src/routes"
+	"karabayyazilim/src/internal/config"
+	"karabayyazilim/src/internal/routes"
 )
 
 func SetupApp() *fiber.App {
