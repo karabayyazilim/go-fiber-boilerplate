@@ -6,7 +6,7 @@ toolchain go1.23.2
 
 require (
 	github.com/bxcodec/faker/v4 v4.0.0-beta.3
-	github.com/gofiber/fiber/v2 v2.52.0
+	github.com/gofiber/fiber/v2 v2.52.5
 	github.com/joho/godotenv v1.5.1
 	github.com/stretchr/testify v1.8.4
 	gorm.io/driver/postgres v1.5.6
