@@ -22,8 +22,8 @@ var db = config.Database()
 
 func (u *User) List(paginator paginate.Paginator) []models.User {
 	var users []models.User
-	/*	paginator.DB = db
-		db = paginator.Paginate()*/
+	paginator.DB = db
+	db = paginator.Paginate()
 	db.Find(&users)
 
 	return users
