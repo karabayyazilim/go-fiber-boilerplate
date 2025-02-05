@@ -5,7 +5,9 @@ import (
 	"karabayyazilim/src/internal/models"
 	"karabayyazilim/src/internal/services"
 	"karabayyazilim/src/pkg/paginate"
+	"karabayyazilim/src/pkg/redis"
 	"strconv"
+	"time"
 )
 
 var userService service.UserService
@@ -18,14 +20,15 @@ func UserList(c *fiber.Ctx) error {
 	page, _ := strconv.Atoi(c.Query("page", "1"))
 	pageSize, _ := strconv.Atoi(c.Query("pageSize", "10"))
 
-	paginator := paginate.Paginator{
-		Page:     page,
-		PageSize: pageSize,
-	}
+	paginator := paginate.Paginator{Page: page, PageSize: pageSize}
+	cacheKey := "user_list_" + strconv.Itoa(page) + "_" + strconv.Itoa(pageSize)
 
-	return c.JSON(fiber.Map{
-		"data": userService.List(paginator),
+	users, _ := redis.Remember(c.Context(), cacheKey, 10*time.Minute, func() (interface{}, error) {
+		users := userService.List(paginator)
+		return users, nil
 	})
+
+	return c.JSON(fiber.Map{"data": users})
 }
 
 func UserCreate(c *fiber.Ctx) error {
